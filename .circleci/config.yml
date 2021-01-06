@@ -63,10 +63,39 @@ jobs:
             pip -V
             python --version
           name: install elephant package
-      - run: nosetests --with-coverage --cover-package=elephant
+      - run:
+          command: |
+            nosetests elephant/test/test_asset.py
+            nosetests elephant/test/test_causality.py
+            nosetests elephant/test/test_cell_assembly_detection.py
+            nosetests elephant/test/test_change_point_detection.py
+            nosetests elephant/test/test_conversion.py
+            nosetests elephant/test/test_csd.py
+            nosetests elephant/test/test_cubic.py
+            nosetests elephant/test/test_gpfa.py
+            nosetests elephant/test/test_icsd.py
+            nosetests elephant/test/test_kcsd.py
+            nosetests elephant/test/test_kernels.py
+            nosetests elephant/test/test_neo_tools.py
+            nosetests elephant/test/test_pandas_bridge.py
+            nosetests elephant/test/test_parallel.py
+            nosetests elephant/test/test_phase_analysis.py
+            nosetests elephant/test/test_signal_processing.py
+            nosetests elephant/test/test_spade.py
+            nosetests elephant/test/test_spectral.py
+            nosetests elephant/test/test_spike_train_correlation.py
+            nosetests elephant/test/test_spike_train_dissimilarity.py
+            nosetests elephant/test/test_spike_train_generation.py
+            nosetests elephant/test/test_spike_train_surrogates.py
+            nosetests elephant/test/test_spike_train_synchrony.py
+            nosetests elephant/test/test_sta.py
+            nosetests elephant/test/test_statistics.py
+            nosetests elephant/test/test_unitary_event_analysis.py
+            nosetests elephant/test/test_utils.py
+            nosetests elephant/test/test_waveform_features.py
+          name: nosetests
 
 workflows:
   main:
     jobs:
       - build-pip
-      - build-conda
